@@ -1,0 +1,91 @@
+
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mental Fitness — Mood Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Mental Fitness</h1>
+    <p class="tagline">Quick daily mood check-ins and simple tools to improve your mental fitness.</p>
+  </header>
+
+  <main class="container">
+    <section class="card" id="checkin">
+      <h2>Today's Check-in</h2>
+      <p class="muted">Tap an emoji to record your mood. Add a quick note if you like.</p>
+
+      <div class="mood-row" role="radiogroup" aria-label="Mood rating">
+        <button class="mood" data-value="1" aria-pressed="false" title="Very low">😞<span class="sr">Very low</span></button>
+        <button class="mood" data-value="2" aria-pressed="false" title="Low">😕<span class="sr">Low</span></button>
+        <button class="mood" data-value="3" aria-pressed="false" title="Okay">😐<span class="sr">Okay</span></button>
+        <button class="mood" data-value="4" aria-pressed="false" title="Good">🙂<span class="sr">Good</span></button>
+        <button class="mood" data-value="5" aria-pressed="false" title="Great">😄<span class="sr">Great</span></button>
+      </div>
+
+      <textarea id="note" placeholder="Optional: write a short note (a few words is fine)"></textarea>
+      <div class="actions">
+        <button id="saveBtn" class="btn primary">Get response</button>
+        <button id="clearBtn" class="btn">Clear</button>
+      </div>
+      <div id="ai-container"></div>
+    </section>
+
+    <section class="card" id="insights">
+      <h2>Insights</h2>
+      <div class="insights-grid">
+        <div>
+          <strong id="avgMood">—</strong>
+          <div class="muted">Avg mood (last 30 days)</div>
+        </div>
+        <div>
+          <strong id="streak">0</strong>
+          <div class="muted">Current streak</div>
+        </div>
+        <div>
+          <strong id="entriesCount">0</strong>
+          <div class="muted">Total entries</div>
+        </div>
+      </div>
+
+      <canvas id="sparkline" width="400" height="80" aria-label="Mood history sparkline"></canvas>
+    </section>
+
+    <section class="card" id="history">
+      <h2>History</h2>
+      <div class="history-controls">
+        <label>Show last <select id="historyRange"><option value="7">7 days</option><option value="14">14 days</option><option value="30" selected>30 days</option><option value="365">All</option></select></label>
+        <div class="right">
+          <button id="exportBtn" class="btn">Export CSV</button>
+          <button id="clearAllBtn" class="btn danger">Clear all</button>
+        </div>
+      </div>
+
+      <ul id="historyList" class="history-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="card" id="recommendations">
+      <h2>Quick activities</h2>
+      <p class="muted">Small activities you can try right now to lift your mood.</p>
+      <div class="chips">
+        <button class="chip">2‑minute breathing</button>
+        <button class="chip">Gratitude: 1 thing</button>
+        <button class="chip">Walk for 5 min</button>
+        <button class="chip">Stretch</button>
+        <button class="chip">Write 1 sentence</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Built with ❤️ — local-only demo. Your data is stored in this browser.</small>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
+
